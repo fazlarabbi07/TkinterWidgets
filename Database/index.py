@@ -59,7 +59,7 @@ zipcode_name_label.grid(row=5,column=0,padx=10)
 delete_label=Label(root,text="Delete ID")
 delete_label.grid(row=8,column=0)
 delete_entry=Entry(root,width=30)
-delete_entry.grid(row=8,column=1)
+delete_entry.grid(row=9,column=1)
 # Submit Button Functionality
 def submit():
     conn=sqlite3.connect('address_book.db')
@@ -101,8 +101,8 @@ def query():
     record=c.fetchall()
     for records in record:
         print_record+=str(records[0]) +" "+str(records[1])+" " +str(records[6])+ "\n"
-
-    query_label=Label(root,text=print_record)
+    top=Toplevel()
+    query_label=Label(top,text=print_record)
     query_label.grid(row=8,column=0,columnspan=2)
 
 
@@ -129,7 +129,7 @@ query_button=Button(root,text="Show Records",command=query)
 query_button.grid(row=7,column=1,columnspan=2,pady=5)
 #Creating Delete Button
 delete_button=Button(root,text="Delete Record",command=delete)
-delete_button.grid(row=9,column=1,columnspan=2,ipady=5)
+delete_button.grid(row=10,column=1,columnspan=2,ipady=5)
 #commit change
 conn.commit()
 
